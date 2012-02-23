@@ -58,8 +58,22 @@ class Papers(object):
              i = i + 1
       return b/i
             
+   def __rating__(self, i):
+      ist1 = numpy.array(self._numpyList[i])
+      r = numpy.zeros((lenl1))
+      rmin = numpy.zeros(5)
+      for j in range(0,lenl1):
+            r[j] = self.__2norm__(i, j)
+      print r  
       
-                   
+      r[i] = numpy.max(r)
+ 
+      for j in range(0,5):
+          ind = numpy.where(r==numpy.min(r))
+          rmin[j] = ind[0][0]
+          r[ind[0][0]] = numpy.max(r)
+      return rmin
+           
 
 def listKey(diks):
    lst = diks.keys()
@@ -119,6 +133,7 @@ def test3():
 print x.__2norm__(0,1)
 print x.__personCor__(0,1)
 print x.__tanDist__(1,2)
+print x.__rating__(1)
 
 
 
